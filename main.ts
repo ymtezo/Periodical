@@ -186,21 +186,18 @@ class CalendarView extends ItemView {
 			});
 			checkbox.checked = this.plugin.isDateChecked(dateStr);
 			
-			checkbox.onchange = async (e) => {
-				e.stopPropagation();
+			checkbox.onchange = async () => {
 				await this.plugin.toggleDate(dateStr);
 				new Notice(`${dateStr}: ${this.plugin.isDateChecked(dateStr) ? 'Checked' : 'Unchecked'}`);
 			};
 
-			// Click on cell to toggle checkbox
-			dayCell.onclick = async (e) => {
+			// Click on cell to toggle checkbox by triggering a click on the checkbox
+			dayCell.onclick = (e) => {
 				// Don't trigger if clicking the checkbox itself
-				if ((e.target as HTMLElement).classList.contains('periodical-checkbox')) {
+				if ((e.target as HTMLElement) === checkbox) {
 					return;
 				}
-				checkbox.checked = !checkbox.checked;
-				await this.plugin.toggleDate(dateStr);
-				new Notice(`${dateStr}: ${this.plugin.isDateChecked(dateStr) ? 'Checked' : 'Unchecked'}`);
+				checkbox.click();
 			};
 		}
 	}
