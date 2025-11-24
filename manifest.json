@@ -1,0 +1,10 @@
+{
+  "id": "periodical",
+  "name": "Periodical",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "A plugin to track periodic tasks and reflections with a calendar interface",
+  "author": "ymtezo",
+  "authorUrl": "https://github.com/ymtezo",
+  "isDesktopOnly": false
+}
