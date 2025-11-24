@@ -186,22 +186,25 @@ class CalendarView extends ItemView {
 			});
 			checkbox.checked = this.plugin.isDateChecked(dateStr);
 			
-			checkbox.onclick = async (e) => {
+			checkbox.onchange = async (e) => {
 				e.stopPropagation();
 				await this.plugin.toggleDate(dateStr);
 				new Notice(`${dateStr}: ${checkbox.checked ? 'Checked' : 'Unchecked'}`);
 			};
 
 			// Click on cell to toggle checkbox
-			dayCell.onclick = async () => {
+			dayCell.onclick = async (e) => {
+				// Don't trigger if clicking the checkbox itself
+				if ((e.target as HTMLElement).classList.contains('periodical-checkbox')) {
+					return;
+				}
 				checkbox.checked = !checkbox.checked;
 				await this.plugin.toggleDate(dateStr);
 				new Notice(`${dateStr}: ${checkbox.checked ? 'Checked' : 'Unchecked'}`);
 			};
 		}
 
-		// Add styles
-		this.addStyles();
+
 	}
 
 	formatDate(date: Date): string {
@@ -219,9 +222,7 @@ class CalendarView extends ItemView {
 		return `${months[this.currentMonth.getMonth()]} ${this.currentMonth.getFullYear()}`;
 	}
 
-	addStyles() {
-		// Styles are added via styles.css
-	}
+
 }
 
 class PeriodicalSettingTab extends PluginSettingTab {
