@@ -124,7 +124,7 @@ class CalendarView extends ItemView {
 		
 		const prevButton = header.createEl('button', { text: '←', cls: 'periodical-nav-button' });
 		prevButton.onclick = () => {
-			this.currentMonth.setMonth(this.currentMonth.getMonth() - 1);
+			this.currentMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() - 1, 1);
 			this.renderCalendar();
 		};
 
@@ -135,7 +135,7 @@ class CalendarView extends ItemView {
 
 		const nextButton = header.createEl('button', { text: '→', cls: 'periodical-nav-button' });
 		nextButton.onclick = () => {
-			this.currentMonth.setMonth(this.currentMonth.getMonth() + 1);
+			this.currentMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + 1, 1);
 			this.renderCalendar();
 		};
 
