@@ -189,7 +189,7 @@ class CalendarView extends ItemView {
 			checkbox.onchange = async (e) => {
 				e.stopPropagation();
 				await this.plugin.toggleDate(dateStr);
-				new Notice(`${dateStr}: ${checkbox.checked ? 'Checked' : 'Unchecked'}`);
+				new Notice(`${dateStr}: ${this.plugin.isDateChecked(dateStr) ? 'Checked' : 'Unchecked'}`);
 			};
 
 			// Click on cell to toggle checkbox
@@ -200,7 +200,7 @@ class CalendarView extends ItemView {
 				}
 				checkbox.checked = !checkbox.checked;
 				await this.plugin.toggleDate(dateStr);
-				new Notice(`${dateStr}: ${checkbox.checked ? 'Checked' : 'Unchecked'}`);
+				new Notice(`${dateStr}: ${this.plugin.isDateChecked(dateStr) ? 'Checked' : 'Unchecked'}`);
 			};
 		}
 	}
