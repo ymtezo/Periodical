@@ -203,8 +203,6 @@ class CalendarView extends ItemView {
 				new Notice(`${dateStr}: ${checkbox.checked ? 'Checked' : 'Unchecked'}`);
 			};
 		}
-
-
 	}
 
 	formatDate(date: Date): string {
@@ -221,8 +219,6 @@ class CalendarView extends ItemView {
 		];
 		return `${months[this.currentMonth.getMonth()]} ${this.currentMonth.getFullYear()}`;
 	}
-
-
 }
 
 class PeriodicalSettingTab extends PluginSettingTab {
